@@ -1,0 +1,2 @@
+* Life-Learning is a website of Foreign Language Learning.
+* We will use react router for single page routing, firebase for authentication users, for CSS-Tailwind, daisyUi, Headless will use, react icon for icon, TanStack query  
