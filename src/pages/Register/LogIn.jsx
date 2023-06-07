@@ -1,9 +1,29 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-hot-toast";
 
 const LogIn = () => {
+    const { logIn} = useAuth();
     const { register, handleSubmit } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    const onSubmit = (data) => {
+
+        logIn(data.email, data.password)
+        .then(result =>{
+            const loggedUser = result.user;
+            if(loggedUser?.email){
+                toast.success("Login Successfully")
+                navigate(from, { replace: true });
+            }
+        })
+        .catch( error => {
+            toast.error(error.message)
+        })
+    };
     return (
         <div className="content-con py-5 sm:py-7 md:py-10 lg:py-20 lg:px-7 bg-[#d9d0dc]">
             <div>

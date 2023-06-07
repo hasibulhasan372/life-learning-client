@@ -1,9 +1,37 @@
+
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+// import { toast } from "react-hot-toast";
+import { imageHosting } from "../../api/savedImage";
+import { toast } from "react-hot-toast";
 
 const SignUp = () => {
+    const {createUser,updateProfileInfo} = useAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        const image = data.photo[0]
+        imageHosting(image)
+        .then(imageData =>{
+            const imgUrl = imageData.data.display_url;
+             createUser(data.email, data.password)
+        .then(result =>{
+            updateProfileInfo(data?.name, imgUrl)
+            .then(()=>{
+                if(result.user){
+                    toast.success("Sign Up Successfully")
+                    console.log(result.user)
+                }
+
+            })
+            .catch(error =>{
+                toast.error(error.message)
+            })
+
+        })
+        })
+       
+    };
     return (
         <div className="content-con py-5 sm:py-7 md:py-10 lg:py-10 bg-[#d9d0dc]">
             <div className="lg:px-7">
@@ -14,7 +42,7 @@ const SignUp = () => {
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <input type="text" {...register("name", { required: false })} name="name" placeholder="Your name" className="input input-bordered" />
+                        <input type="text" {...register("name", { required: true })} name="name" placeholder="Your name" className="input input-bordered" />
                     </div>
                     {/* Email Input  */}
                     <div className="form-control">
@@ -23,21 +51,22 @@ const SignUp = () => {
                         </label>
                         <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
                     </div>
-                    {/* Email Input  */}
+                    {/* Photo Input  */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Your Photo</span>
                         </label>
-                        <input type="file" {...register("photo", { required: false })} name="photo" className="" />
+                        <input type="file" {...register("photo", { required: true })} name="photo" className="" />
+                        
                     </div>
                     {/* Phone Number Input  */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Phone Number</span>
                         </label>
-                        <input type="number" {...register("number", { required: false })} name="number" placeholder="Valid number" className="input input-bordered" />
+                        <input type="number" {...register("number", { required: true })} name="number" placeholder="Valid number" className="input input-bordered" />
                     </div>
-                    {/* Phone Number Input  */}
+                    {/* Gender Input  */}
                     <div className="form-control w-4/12 sm:w-2/12 md:w-4/12">
                         <label className="label">
                             <span className="label-text">Gender</span>
@@ -48,12 +77,12 @@ const SignUp = () => {
                             <option value="other">other</option>
                         </select>
                     </div>
-                     {/* Name Input  */}
+                     {/* Address Input  */}
                      <div className="form-control">
                         <label className="label">
                             <span className="label-text">Address</span>
                         </label>
-                        <input type="text" {...register("address", { required: false })} name="address" placeholder="Your address" className="input input-bordered" />
+                        <input type="text" {...register("address")} name="address" placeholder="Your address" className="input input-bordered" />
                     </div>  
                     {/* Password Input  */}
                     <div className="form-control">
