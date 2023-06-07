@@ -5,9 +5,9 @@ const LogIn = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => console.log(data);
     return (
-        <div className="content-con py-5 sm:py-7 md:py-10 lg:py-32 bg-[#d9d0dc]">
+        <div className="content-con py-5 sm:py-7 md:py-10 lg:py-20 lg:px-7 bg-[#d9d0dc]">
             <div>
-                <form onSubmit={handleSubmit(onSubmit)}  className="bg-white md:mx-6 lg:px-12 md:w-1/2 md:p-6 md:rounded-md">
+                <form onSubmit={handleSubmit(onSubmit)}  className="bg-white px-6  md:px-8 lg:px-12 md:w-1/2 md:mx-auto lg:w-1/3 lg:mx-0 py-6 md:rounded-md">
                    
                     {/* Email Input  */}
                     <div className="form-control">
@@ -24,6 +24,8 @@ const LogIn = () => {
                         <input type="password" {...register("password", { required: true })} name="password" placeholder="password" className="input input-bordered" />
                      
                     </div>
+
+                    <button className=" text-[#1877f2] hover:underline">Forgot Password ?</button>
 
                     <button className="btn  mt-4 bg-gradient-to-r from-purple-600 to-red-500 font-bold text-xl md:text-2xl w-full text-white capitalize" type="submit"> Submit</button>
                     <div>
