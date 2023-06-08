@@ -1,13 +1,15 @@
 
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 // import { toast } from "react-hot-toast";
 import { imageHosting } from "../../api/savedImage";
 import { toast } from "react-hot-toast";
+import { savedUser } from "../../api/auth";
 
 const SignUp = () => {
-    const {createUser,updateProfileInfo} = useAuth();
+    const {createUser,updateProfileInfo, logOut} = useAuth();
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         const image = data.photo[0]
@@ -19,8 +21,11 @@ const SignUp = () => {
             updateProfileInfo(data?.name, imgUrl)
             .then(()=>{
                 if(result.user){
-                    toast.success("Sign Up Successfully")
                     console.log(result.user)
+                    savedUser(result.user)
+                    toast.success("Sign Up Successfully")
+                    logOut()
+                    navigate("/login")
                 }
 
             })
