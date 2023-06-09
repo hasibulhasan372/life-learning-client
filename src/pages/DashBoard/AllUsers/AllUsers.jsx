@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import { makeAdmin, makeTeacher } from "../../../api/auth";
+import { deleteUser, makeAdmin, makeInstructor} from "../../../api/auth";
 import User from "../../../components/Card/User";
 import useGetUsers from "../../../hooks/useGetUsers";
 
@@ -20,18 +20,29 @@ const AllUsers = () => {
             toast.error(error.message)
         })
     }
-    const handleMakeTeacher = (id) =>{
-        makeTeacher(id)
+    const handleInstructor = (id) =>{
+        makeInstructor(id)
         .then(data => {
             if(data.modifiedCount > 0){
                 refetch();
-                toast.success("You are Teacher Now")
+                toast.success("You are Instructor Now")
             }
         })
         .catch(error =>{
             toast.error(error.message)
         })
-    }
+    };
+
+    const handleDeleteUser = (id) =>{
+        deleteUser(id)
+        .then(data =>{
+            if(data.deletedCount > 0){
+                refetch();
+                toast.success("Deleted the user successfully");
+            }
+        })
+        .catch(error =>toast.error(error.message))
+    };
 
 
 
@@ -56,7 +67,7 @@ const AllUsers = () => {
                             </th>
                           
                             <th className="table-head">
-                                Make Teacher
+                                Make Instructor
                             </th>
                             <th className="table-head">
                                 Make Admin
@@ -73,7 +84,8 @@ const AllUsers = () => {
                             key={user._id} 
                             index={index} 
                             handleMakeAdmin={handleMakeAdmin}
-                            handleMakeTeacher={handleMakeTeacher}
+                            handleMakeInstructor={handleInstructor}
+                            handleDeleteUser={handleDeleteUser}
                             ></User>)
                         }
                     </tbody>

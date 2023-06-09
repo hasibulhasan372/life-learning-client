@@ -1,6 +1,6 @@
 
 
-const TeacherMenu = () => {
+const InstructorMenu = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const TeacherMenu = () => {
     );
 };
 
-export default TeacherMenu;
+export default InstructorMenu;

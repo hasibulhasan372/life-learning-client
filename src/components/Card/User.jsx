@@ -1,7 +1,7 @@
 import {MdAdminPanelSettings} from "react-icons/md"
 import {GiTeacher} from "react-icons/gi"
 
-const User = ({user, index, handleMakeAdmin, handleMakeTeacher}) => {
+const User = ({user, index, handleMakeAdmin,  handleMakeInstructor, handleDeleteUser}) => {
     const {name, photo, role, email, _id} = user;
     // TODO: Use Conditional of role 
     return (
@@ -21,22 +21,25 @@ const User = ({user, index, handleMakeAdmin, handleMakeTeacher}) => {
             <div className="text-sm text-gray-500">{email}</div>
         </td>
         <td className="px-6 py-4">
-        <button onClick={()=>handleMakeTeacher(_id)} disabled={role==="admin"}>
-            {user && role === "teacher" ?
-             <span className="font-bold flex items-center gap-1 text-red-600"><GiTeacher className="text-lg"></GiTeacher>Teacher</span> :
-             <span  className= "px-4 py-1 text-sm text-white bg-blue-600 rounded font-bold">Teacher</span> 
+        <button onClick={()=>handleMakeInstructor(_id)} disabled={role==="instructor"}>
+            {user && role === "instructor" ?
+             <span className="font-bold flex items-center gap-1 text-red-600"><GiTeacher className="text-lg"></GiTeacher>Instructor</span> :
+             <span  className= "px-4 py-1 text-sm text-white bg-blue-600 rounded font-bold">Instructor</span> 
             }
             </button>
         </td>
         <td className="px-6 py-4">
-            <button onClick={()=>handleMakeAdmin(_id)} disabled={role==="teacher"}>
+            <button onClick={()=>handleMakeAdmin(_id)} disabled={role==="admin"}>
             {user && role === "admin" ?
              <span className="font-bold flex items-center gap-1 text-red-600"><MdAdminPanelSettings className="text-lg"></MdAdminPanelSettings>  Admin</span> :
              <span  className="px-4 py-1 text-sm text-white bg-blue-600 rounded font-bold">Admin</span> }
             </button>
         </td>
         <td className="px-6 py-4">
-            <a href="#" className="px-4 py-1 text-sm text-white bg-red-400 rounded font-bold">Delete</a>
+            <button onClick={()=>handleDeleteUser(_id)} >
+            <span className="px-4 py-1 text-sm text-white bg-red-400 rounded font-bold">Delete</span>
+            </button>
+           
         </td>
     </tr>
       
