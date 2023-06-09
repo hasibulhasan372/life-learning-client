@@ -14,3 +14,6 @@
 .menu-bar{
     @apply text-lg font-bold list-none;
 }
+.table-head{
+    @apply px-6 py-2 text-sm sm:text-base  lg:text-lg text-gray-500;
+}

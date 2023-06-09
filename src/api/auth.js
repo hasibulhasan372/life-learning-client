@@ -1,3 +1,4 @@
+// Saved user API 
 export const savedUser = async (user)=>{
     const userInfo = {
         name: user?.displayName,
@@ -15,4 +16,6 @@ export const savedUser = async (user)=>{
     const data = await res.json()
     return data
 
-}
+};
+
+

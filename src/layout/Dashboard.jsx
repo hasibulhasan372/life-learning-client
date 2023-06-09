@@ -4,10 +4,12 @@ import Sidebar from "../components/dashboard/Sidebar";
 
 const Dashboard = () => {
     return (
-        <>
-        <Sidebar></Sidebar>
-         <Outlet></Outlet>   
-        </>
+        <div className="flex">
+            <Sidebar></Sidebar>
+            <div className="grow">
+            <Outlet></Outlet>
+            </div>
+        </div>
     );
 };
 
