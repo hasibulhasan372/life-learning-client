@@ -12,8 +12,6 @@ const GoogleLogin = () => {
     const handleGoogle = () =>{
         googleSignIn()
         .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser)
             if(result.user){
                 savedUser(result.user)
                 toast.success("Login Successfully")
