@@ -1,6 +1,7 @@
+import {MdAdminPanelSettings} from "react-icons/md"
+import {GiTeacher} from "react-icons/gi"
 
-
-const User = ({user, index, handleMakeAdmin}) => {
+const User = ({user, index, handleMakeAdmin, handleMakeTeacher}) => {
     const {name, photo, role, email, _id} = user;
     // TODO: Use Conditional of role 
     return (
@@ -20,15 +21,22 @@ const User = ({user, index, handleMakeAdmin}) => {
             <div className="text-sm text-gray-500">{email}</div>
         </td>
         <td className="px-6 py-4">
-            <a href="#" className="px-4 py-1 text-sm text-white bg-blue-400 rounded">Teacher</a>
-        </td>
-        <td className="px-6 py-4">
-            <button onClick={()=>handleMakeAdmin(_id)}>
-            <span  className={`${user && role === "admin" ? <span>Admin</span> : "px-4 py-1 text-sm text-white bg-blue-400 rounded"}`}>Admin</span>
+        <button onClick={()=>handleMakeTeacher(_id)} disabled={role==="admin"}>
+            {user && role === "teacher" ?
+             <span className="font-bold flex items-center gap-1 text-red-600"><GiTeacher className="text-lg"></GiTeacher>Teacher</span> :
+             <span  className= "px-4 py-1 text-sm text-white bg-blue-600 rounded font-bold">Teacher</span> 
+            }
             </button>
         </td>
         <td className="px-6 py-4">
-            <a href="#" className="px-4 py-1 text-sm text-white bg-red-400 rounded">Delete</a>
+            <button onClick={()=>handleMakeAdmin(_id)} disabled={role==="teacher"}>
+            {user && role === "admin" ?
+             <span className="font-bold flex items-center gap-1 text-red-600"><MdAdminPanelSettings className="text-lg"></MdAdminPanelSettings>  Admin</span> :
+             <span  className="px-4 py-1 text-sm text-white bg-blue-600 rounded font-bold">Admin</span> }
+            </button>
+        </td>
+        <td className="px-6 py-4">
+            <a href="#" className="px-4 py-1 text-sm text-white bg-red-400 rounded font-bold">Delete</a>
         </td>
     </tr>
       

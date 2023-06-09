@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast";
-import { makeAdmin } from "../../../api/auth";
+import { makeAdmin, makeTeacher } from "../../../api/auth";
 import User from "../../../components/Card/User";
 import useGetUsers from "../../../hooks/useGetUsers";
 
@@ -14,6 +14,18 @@ const AllUsers = () => {
             if(data.modifiedCount > 0){
                 refetch();
                 toast.success("You are Admin Now")
+            }
+        })
+        .catch(error =>{
+            toast.error(error.message)
+        })
+    }
+    const handleMakeTeacher = (id) =>{
+        makeTeacher(id)
+        .then(data => {
+            if(data.modifiedCount > 0){
+                refetch();
+                toast.success("You are Teacher Now")
             }
         })
         .catch(error =>{
@@ -56,7 +68,13 @@ const AllUsers = () => {
                     </thead>
                     <tbody className=" border-b-[2px]">
                         {
-                            allUsers.map((user, index) => <User user={user} key={user._id} index={index} handleMakeAdmin={handleMakeAdmin}></User>)
+                            allUsers.map((user, index) => <User 
+                            user={user} 
+                            key={user._id} 
+                            index={index} 
+                            handleMakeAdmin={handleMakeAdmin}
+                            handleMakeTeacher={handleMakeTeacher}
+                            ></User>)
                         }
                     </tbody>
                 </table>
