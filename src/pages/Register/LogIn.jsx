@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import GoogleLogin from "../shared/GoogleLogin";
 
 const LogIn = () => {
     const { logIn} = useAuth();
@@ -49,8 +50,10 @@ const LogIn = () => {
                     <button className="btn  mt-4 bg-gradient-to-r from-purple-600 to-red-500 font-bold text-xl md:text-2xl w-full text-white capitalize" type="submit"> Submit</button>
                     <div>
                     <p className="pt-4">Haven't you an account? <Link to="/signUp" className="underline text-sky-500 ">Sign Up</Link></p>
+                    <GoogleLogin></GoogleLogin>
                     </div>
                 </form>
+               
 
                 <div>
                     

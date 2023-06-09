@@ -5,8 +5,11 @@ import { useState } from "react";
 
 
 const Navbar = () => {
-    const {user, logOut} = useAuth();
+    const {user, logOut, loading} = useAuth();
     const [open, setOpen] = useState(false);
+    if(loading){
+        return <h2>Loading-----</h2>
+    }
 
     const handleLogOut = ()=>{
         logOut();

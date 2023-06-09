@@ -5,7 +5,7 @@ import useAuth from "./useAuth";
 const useGetUsers = () => {
     const {loading} = useAuth();
 
-    const {data: allUsers = []} = useQuery({
+    const {data: allUsers = [], refetch} = useQuery({
         queryKey: ["users"],
         enabled: !loading,
         queryFn: async() =>{
@@ -14,7 +14,7 @@ const useGetUsers = () => {
         }
 
        })
-       return [allUsers]
+       return [allUsers, refetch]
 };
 
 export default useGetUsers;

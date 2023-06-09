@@ -31,7 +31,7 @@ const AuthProvider = ({children}) => {
     const passwordReset = (email) =>{
         setLoading(true);
         return sendPasswordResetEmail(auth, email)
-    }
+    };
     useEffect(() =>{
         const unSubscribe = onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser);

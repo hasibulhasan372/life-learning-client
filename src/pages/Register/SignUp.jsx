@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import { imageHosting } from "../../api/savedImage";
 import { toast } from "react-hot-toast";
 import { savedUser } from "../../api/auth";
+import GoogleLogin from "../shared/GoogleLogin";
 
 const SignUp = () => {
     const {createUser,updateProfileInfo, logOut} = useAuth();
@@ -109,6 +110,7 @@ const SignUp = () => {
                     <button className="btn  mt-4 bg-gradient-to-r from-purple-600 to-red-500 font-bold text-xl md:text-2xl w-full text-white capitalize" type="submit"> Submit</button>
                     <div>
                         <p className="pt-4">You have already an account? <Link to="/login" className="underline text-sky-500 ">Login</Link></p>
+                        <GoogleLogin></GoogleLogin>
                     </div>
                 </form>
 

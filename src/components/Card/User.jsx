@@ -1,7 +1,8 @@
 
 
-const User = ({user, index}) => {
-    const {name, photo, role, email} = user
+const User = ({user, index, handleMakeAdmin}) => {
+    const {name, photo, role, email, _id} = user;
+    // TODO: Use Conditional of role 
     return (
         <tr className="">
         <td className="px-6 py-4 text-sm text-gray-500">
@@ -22,7 +23,9 @@ const User = ({user, index}) => {
             <a href="#" className="px-4 py-1 text-sm text-white bg-blue-400 rounded">Teacher</a>
         </td>
         <td className="px-6 py-4">
-            <a href="#" className="px-4 py-1 text-sm text-white bg-blue-400 rounded">Admin</a>
+            <button onClick={()=>handleMakeAdmin(_id)}>
+            <span  className={`${user && role === "admin" ? <span>Admin</span> : "px-4 py-1 text-sm text-white bg-blue-400 rounded"}`}>Admin</span>
+            </button>
         </td>
         <td className="px-6 py-4">
             <a href="#" className="px-4 py-1 text-sm text-white bg-red-400 rounded">Delete</a>
