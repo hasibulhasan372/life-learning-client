@@ -1,9 +1,32 @@
-
-
+import { toast } from "react-hot-toast";
 import CoursesForAllCard from "../../components/Card/coursesForAllCard";
 import useCoursesForAll from "../../hooks/useCoursesForAll";
 const Courses = () => {
     const [coursesForAll] = useCoursesForAll();
+
+    const handleEnrollCourses = (course) =>{
+        const { courseName, instructorName, fee, image, _id} = course
+        const selectedCourse = {
+                name: courseName,
+                instructorName,
+                fee,
+                image,
+                courseId: _id,
+        }
+        fetch(`${import.meta.env.VITE_LOCAL_HOST}/selectedCourses`,{
+            method: "POST",
+            headers: {
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(selectedCourse)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.insertedId){
+                toast.success("You have selected the course for enrollment")
+            }
+        })
+    }
     
 
     return (
@@ -12,7 +35,9 @@ const Courses = () => {
             <h3 className="text-lg text-center md:text-left md:text-xl lg:text-2xl mt-3 md:mt-5 font-bold">Choose your course and start learning</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  xl:grid-cols-4 justify-center items-center gap-6 mt-4 md:mt-8 lg:mt-12">
                 {
-                    coursesForAll.map(course => <CoursesForAllCard key={course._id} course={course}></CoursesForAllCard>)
+                    coursesForAll.map(course => <CoursesForAllCard key={course._id} course={course}
+                    handleEnrollCourses={handleEnrollCourses}
+                    ></CoursesForAllCard>)
                 }
             </div>
         </div>
