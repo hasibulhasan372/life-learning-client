@@ -37,7 +37,7 @@ const Navbar = () => {
                     {
                         user && user?.photoURL ? <button onClick={()=> setOpen(!open) } 
                         className="relative"
-                        ><img src={user?.photoURL} alt="user" className=" w-7 h-7 md:w-12 md:h-12 rounded-full" /></button> : <FaUserAlt></FaUserAlt>
+                        ><img src={user?.photoURL} alt="user" className=" w-7 h-7 md:w-12 md:h-12 rounded-full object-cover" /></button> : <FaUserAlt></FaUserAlt>
                     }
                     </> :
                     <Link to='/login' className="btn btn-sm  bg-gradient-to-r from-purple-600 to-red-500 text-white capitalize font-semibold">Login</Link>

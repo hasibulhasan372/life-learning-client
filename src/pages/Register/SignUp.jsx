@@ -41,7 +41,7 @@ const SignUp = () => {
     return (
         <div className="content-con py-5 sm:py-7 md:py-10 lg:py-10 bg-[#d9d0dc]">
             <div className="lg:px-7">
-                <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-6  md:px-8 lg:px-12 md:w-1/2 md:mx-auto lg:w-1/3 lg:mx-0 py-6 md:rounded-md">
+                <form onSubmit={handleSubmit(onSubmit)} className="bg-white px-3  md:px-8 lg:px-12 md:w-1/2 md:mx-auto lg:w-1/3 lg:mx-0 py-6 md:rounded-md">
                             <h2 className="text-xl sm:2xl lg:text-3xl font-bold py-3 sm:py-4">Please Sign Up</h2>
                     {/* Name Input  */}
                     <div className="form-control">

@@ -44,9 +44,7 @@ const LogIn = () => {
                         <input type="password" {...register("password", { required: true })} name="password" placeholder="password" className="input input-bordered" />
                      
                     </div>
-
-                    <button className=" text-[#1877f2] hover:underline">Forgot Password ?</button>
-
+                    {/* Submit Button   */}
                     <button className="btn  mt-4 bg-gradient-to-r from-purple-600 to-red-500 font-bold text-xl md:text-2xl w-full text-white capitalize" type="submit"> Submit</button>
                     <div>
                     <p className="pt-4">Haven't you an account? <Link to="/signUp" className="underline text-sky-500 ">Sign Up</Link></p>

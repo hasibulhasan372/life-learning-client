@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import AdminMenu from "./AdminMenu";
 import { FaUserAlt } from "react-icons/fa";
+import InstructorMenu from "./InstructorMenu";
 
 const Sidebar = () => {
     const { user } = useAuth();
@@ -14,7 +15,7 @@ const Sidebar = () => {
                         <li className="mb-1 list-none">
                             <Link to="/" >
                                 {
-                                    user && user?.photoURL ? <img src={user?.photoURL} alt="user" className=" w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-32 lg:h-32 rounded-full mx-auto"/> : <FaUserAlt 
+                                    user && user?.photoURL ? <img src={user?.photoURL} alt="user" className=" w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-32 lg:h-32 rounded-full mx-auto object-cover"/> : <FaUserAlt 
                                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-32 lg:h-32 rounded-full mx-auto"></FaUserAlt>
                                 }
                             </Link>
@@ -26,6 +27,7 @@ const Sidebar = () => {
 
                     <div>
                         <AdminMenu></AdminMenu>
+                        <InstructorMenu></InstructorMenu>
                     </div>
                 </div>
                 <div>

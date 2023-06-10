@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
-import { deleteUser, makeAdmin, makeInstructor} from "../../../api/auth";
-import User from "../../../components/Card/User";
-import useGetUsers from "../../../hooks/useGetUsers";
+import { deleteUser, makeAdmin, makeInstructor} from "../../../../api/auth";
+import User from "../../../../components/Card/User";
+import useGetUsers from "../../../../hooks/useGetUsers";
 
 
 const AllUsers = () => {
@@ -9,6 +9,7 @@ const AllUsers = () => {
 
 
     const handleMakeAdmin = (id) =>{
+        //TODO: Axios Secure 
         makeAdmin(id)
         .then(data => {
             if(data.modifiedCount > 0){
@@ -21,6 +22,7 @@ const AllUsers = () => {
         })
     }
     const handleInstructor = (id) =>{
+        //TODO: Axios Secure 
         makeInstructor(id)
         .then(data => {
             if(data.modifiedCount > 0){
@@ -34,6 +36,7 @@ const AllUsers = () => {
     };
 
     const handleDeleteUser = (id) =>{
+        //TODO: Axios Secure 
         deleteUser(id)
         .then(data =>{
             if(data.deletedCount > 0){

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const InstructorMenu = () => {
     return (
         <div>
-            <NavLink to="/addClass">Add Classes</NavLink>
+            <NavLink to="/dashboard/addCourses">Add Courses</NavLink>
         </div>
     );
 };

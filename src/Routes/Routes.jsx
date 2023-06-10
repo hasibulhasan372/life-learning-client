@@ -5,8 +5,9 @@ import Classes from "../pages/CLasses/Classes";
 import LogIn from "../pages/Register/LogIn";
 import SignUp from "../pages/Register/SignUp";
 import Dashboard from "../layout/dashboard";
-import AllUsers from "../pages/DashBoard/AllUsers/AllUsers";
-import AddClasses from "../pages/DashBoard/AddClasses/AddClasses";
+import AllUsers from "../pages/DashBoard/Admin/AllUsers/AllUsers"
+import AddCourses from "../pages/DashBoard/Instructor/AddCourses/AddCourses";
+import AllCourses from "../pages/DashBoard/Admin/AllCourses/AllCourses";
 
 const router = createBrowserRouter([
     {
@@ -38,11 +39,17 @@ const router = createBrowserRouter([
         children: [
             {
                 path:"allUsers",
-                element:<AllUsers></AllUsers>
+                element: <AllUsers></AllUsers>
+               
             },
             {
-                path: "addClass",
-                element: <AddClasses></AddClasses>
+                path: "addCourses",
+                element: <AddCourses></AddCourses>
+            },
+            // For Admin 
+            {
+                path: "allCourses",
+                element:<AllCourses></AllCourses>
             }
         ]
     }
