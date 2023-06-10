@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AdminMenu from "./AdminMenu";
 import { FaUserAlt } from "react-icons/fa";
 import InstructorMenu from "./InstructorMenu";
+import StudentMenu from "./StudentMenu";
 
 const Sidebar = () => {
     const { user } = useAuth();
@@ -28,6 +29,7 @@ const Sidebar = () => {
                     <div>
                         <AdminMenu></AdminMenu>
                         <InstructorMenu></InstructorMenu>
+                      <StudentMenu></StudentMenu>
                     </div>
                 </div>
                 <div>

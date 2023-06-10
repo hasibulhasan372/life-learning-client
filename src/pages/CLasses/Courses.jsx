@@ -1,8 +1,10 @@
 import { toast } from "react-hot-toast";
 import CoursesForAllCard from "../../components/Card/coursesForAllCard";
 import useCoursesForAll from "../../hooks/useCoursesForAll";
+import useAuth from "../../hooks/useAuth";
 const Courses = () => {
     const [coursesForAll] = useCoursesForAll();
+    const {user} = useAuth();
 
     const handleEnrollCourses = (course) =>{
         const { courseName, instructorName, fee, image, _id} = course
@@ -12,6 +14,7 @@ const Courses = () => {
                 fee,
                 image,
                 courseId: _id,
+                email: user?.email,
         }
         fetch(`${import.meta.env.VITE_LOCAL_HOST}/selectedCourses`,{
             method: "POST",

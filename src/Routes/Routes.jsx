@@ -9,6 +9,7 @@ import AddCourses from "../pages/DashBoard/Instructor/AddCourses/AddCourses";
 import AllCourses from "../pages/DashBoard/Admin/AllCourses/AllCourses";
 import InstructorCourses from "../pages/DashBoard/Instructor/InstructorCourses/InstructorCourses";
 import Courses from "../pages/CLasses/Courses";
+import SelectedCourses from "../pages/DashBoard/Student/SelectedCourses/SelectedCourses";
 
 const router = createBrowserRouter([
     {
@@ -39,9 +40,8 @@ const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
             {
-                path:"allUsers",
-                element: <AllUsers></AllUsers>
-               
+                path: "selectedCourses",
+                element: <SelectedCourses></SelectedCourses>
             },
             // For Instructor 
             {
@@ -53,6 +53,12 @@ const router = createBrowserRouter([
                 element: <InstructorCourses></InstructorCourses>
             },
             // For Admin 
+            
+            {
+                path:"allUsers",
+                element: <AllUsers></AllUsers>
+               
+            },
             {
                 path: "allCourses",
                 element:<AllCourses></AllCourses>
