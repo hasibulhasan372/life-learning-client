@@ -5,11 +5,9 @@ import { useState } from "react";
 
 
 const Navbar = () => {
-    const {user, logOut, loading} = useAuth();
+    const {user, logOut} = useAuth();
     const [open, setOpen] = useState(false);
-    if(loading){
-        return <h2>Loading-----</h2>
-    }
+   
 
     const handleLogOut = ()=>{
         logOut();
@@ -27,7 +25,7 @@ const Navbar = () => {
                <ul className="md:hover:transition md:hover:duration-500 md:space-x-6 lg:space-x-10  flex items-center ">
                <li className="menu-bar">  <Link to='/'>Home</Link></li>
                 <li className=" menu-bar"> <Link to='/instructors' className="">Instructors</Link></li>
-                <li className=" menu-bar"><Link to='/classes' className="">Classes</Link></li>
+                <li className=" menu-bar"><Link to='/courses' className="">Courses</Link></li>
                 <li className="menu-bar"> <Link to='/dashboard' className="">Dashboard</Link></li>
                </ul>
             </div>

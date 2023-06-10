@@ -15,7 +15,8 @@ const AddClass = () => {
             image:classPhoto, 
             fee: parseFloat(price), 
             seats: parseInt(availableSeat),
-            status:"pending"
+            status:"pending",
+            enrolled:0,
         }
         //TODO:Need to Secure by Axios secure 
         fetch('http://localhost:5000/courses',{
@@ -89,7 +90,7 @@ const AddClass = () => {
 
                     {/* Submit  */}
                     <div className="w-full border py-2 rounded-lg text-center text-lg font-bold bg-green-500 hover:bg-green-700 transition duration-500  text-white mx-auto col-span-2 md:mt-4">
-                        <input type="submit" value="Add Class" />
+                        <input type="submit" value="Add Course" />
                     </div>
 
                 </form>

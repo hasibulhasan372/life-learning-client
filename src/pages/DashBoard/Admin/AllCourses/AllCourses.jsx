@@ -28,7 +28,7 @@ const AllCourses = () => {
        .then(data => {
         if(data.modifiedCount > 0){
                 refetch();
-                toast.success("The Courses is approved Now ")
+                toast.success("The Courses is Denied")
         }
        })
     };
