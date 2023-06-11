@@ -1,15 +1,13 @@
 
-
 const AllCoursesCard = ({ course, index, handleApproved, handleDeny }) => {
     const { courseName, instructorName, instructorEmail, fee, image, status, seats, _id } = (course)
     return (
-
         <tr className="">
             <td className="px-6 py-4 text-sm text-gray-500">
                 {index + 1}
             </td>
             <td className="px-6 py-4 ">
-                <img src="" alt={image} className="w-12 md:w-20" />
+                <img src={image} alt="" className="w-12 md:w-20" />
             </td>
             <td className="px-6 py-4">
                 <div className="text-sm text-gray-900">
