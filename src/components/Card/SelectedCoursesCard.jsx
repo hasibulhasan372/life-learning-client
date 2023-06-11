@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 
 
-const SelectedCoursesCard = ({ course, index, handlePay, handleDelete }) => {
-    const { name, instructorName,  fee, image, _id } = (course)
+const SelectedCoursesCard = ({ course, index, handleDelete }) => {
+    const { name, instructorName,  fee, image, _id } = (course);
+    
     return (
         <tr className="">
             <td className="px-6 py-4 text-sm text-gray-500">
@@ -28,9 +30,9 @@ const SelectedCoursesCard = ({ course, index, handlePay, handleDelete }) => {
             </td>
             
             <td className="px-6 py-4">
-                <button onClick={() => handlePay(_id)}>
-                <span  className="px-4 py-1 text-sm text-white bg-blue-500 hover:bg-blue-800 duration-500 transition rounded font-bold">Pay</span>
-                </button>
+                <Link to={`/dashboard/payment/${_id}`}>
+                <span  className="px-4 py-1 text-sm text-white bg-blue-500 hover:bg-blue-800 duration-500 transition rounded font-bold">Checkout</span>
+                </Link>
             </td>
             <td className="px-6 py-4">
                 <button onClick={() => handleDelete(_id)} >

@@ -10,6 +10,7 @@ import AllCourses from "../pages/DashBoard/Admin/AllCourses/AllCourses";
 import InstructorCourses from "../pages/DashBoard/Instructor/InstructorCourses/InstructorCourses";
 import Courses from "../pages/CLasses/Courses";
 import SelectedCourses from "../pages/DashBoard/Student/SelectedCourses/SelectedCourses";
+import Payment from "../pages/DashBoard/Student/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -39,9 +40,14 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: <Dashboard></Dashboard>,
         children: [
+            // For Student 
             {
                 path: "selectedCourses",
                 element: <SelectedCourses></SelectedCourses>
+            },
+            {
+                path:"payment/:id",
+                element:<Payment></Payment>
             },
             // For Instructor 
             {
