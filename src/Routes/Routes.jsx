@@ -11,6 +11,9 @@ import Courses from "../pages/Courses/Courses";
 import InstructorCourses from "../pages/DashBoard/Instructor/InstructorCourses/InstructorCourses";
 import SelectedCourses from "../pages/DashBoard/Student/SelectedCourses/SelectedCourses";
 import Payment from "../pages/DashBoard/Student/Payment/Payment";
+import Instructors from "../pages/Instructors/Instructors";
+import PrivateRouter from "./PrivateRouter";
+import AdminRouter from "./AdminRouter";
 
 const router = createBrowserRouter([
     {
@@ -33,12 +36,16 @@ const router = createBrowserRouter([
             {
                 path: "signUp",
                 element: <SignUp></SignUp>
+            },
+            {
+                path:'instructors',
+                element: <Instructors></Instructors>
             }
         ]
     },
     {
         path: "dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRouter><Dashboard></Dashboard></PrivateRouter>,
         children: [
             // For Student 
             {
@@ -62,12 +69,12 @@ const router = createBrowserRouter([
             
             {
                 path:"allUsers",
-                element: <AllUsers></AllUsers>
+                element: <AdminRouter><AllUsers></AllUsers></AdminRouter>
                
             },
             {
                 path: "allCourses",
-                element:<AllCourses></AllCourses>
+                element:<AdminRouter><AllCourses></AllCourses></AdminRouter>
             }
         ]
     }

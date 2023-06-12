@@ -20,3 +20,9 @@
 .table-head{
     @apply px-6 py-2 text-sm sm:text-base  lg:text-lg text-gray-500;
 }
+.banner-title{
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-red-500 absolute left-24 sm:left-44 md:left-48 lg:left-48 top-6 lg:top-10 font-bold md:font-extrabold  text-5xl sm:text-6xl  lg:text-9xl;
+};
+.banner-text{
+    @apply text-white absolute top-1/2 text-xl mt-10 lg:mt-0 lg:text-3xl font-bold left-10 md:left-32 lg:left-44 text-center ;
+}

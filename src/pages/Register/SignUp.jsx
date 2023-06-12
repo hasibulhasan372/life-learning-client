@@ -22,11 +22,10 @@ const SignUp = () => {
             updateProfileInfo(data?.name, imgUrl)
             .then(()=>{
                 if(result.user){
-                    console.log(result.user)
-                    savedUser(result.user)
-                    toast.success("Sign Up Successfully")
-                    logOut()
-                    navigate("/login")
+                    savedUser(result.user);
+                    toast.success("Sign Up Successfully");
+                    logOut();
+                    navigate("/login");
                 }
 
             })

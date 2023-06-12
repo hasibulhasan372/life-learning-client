@@ -10,7 +10,7 @@ const User = ({user, index, handleMakeAdmin,  handleMakeInstructor, handleDelete
             {index + 1}
         </td>
         <td className="px-6 py-4 ">
-           <img src={photo} alt="User image" className="w-12 md:w-20" />
+           <img src={photo} alt="User image" className="w-12 md:w-20 h-20 object-cover" />
         </td>
         <td className="px-6 py-4">
             <div className="text-sm text-gray-900">

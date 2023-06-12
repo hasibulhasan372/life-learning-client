@@ -4,7 +4,7 @@ import Sidebar from "../components/dashboard/Sidebar";
 
 const Dashboard = () => {
     return (
-        <div className="flex">
+        <div className="flex w-full">
             <Sidebar></Sidebar>
             <div className="grow">
             <Outlet></Outlet>

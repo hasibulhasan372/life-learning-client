@@ -1,16 +1,18 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useAdmin from "../hooks/useAdmin";
 
-const PrivateRouter = ({children}) => {
+const AdminRouter = ({children}) => {
     const {user, loading} = useAuth();
+    const [isAdmin, isAdminLoading] = useAdmin();
     const location = useLocation();
-    if(loading){
+    if(loading || isAdminLoading){
         return <h3>Loading....</h3>
     }
-    if(user){
+    if(user && isAdmin){
         return children
     }
     return <Navigate to="/login" state={{from: location}} replace ></Navigate>;
 };
 
-export default PrivateRouter;
+export default AdminRouter;

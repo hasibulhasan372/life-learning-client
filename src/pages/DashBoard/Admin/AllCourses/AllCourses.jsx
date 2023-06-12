@@ -36,7 +36,7 @@ const AllCourses = () => {
     return (
         <div>
             <div className="flex flex-col justify-center mt-4 md:mt-10 lg:mt-20 overflow-x-scroll lg:overflow-x-hidden">
-                <div className="w-full lg:w-5/6 lg:mx-auto">
+                <div className="w-full lg:px-8 lg:mx-auto">
                     <div className="  ">
                         <table className="w-full text-left">
                             <thead className="bg-pink-50 border-b-[2px]">
