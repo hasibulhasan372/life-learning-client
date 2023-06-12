@@ -1,10 +1,13 @@
+import HeroSection from "../HeroSection/HeroSection";
+import PopularCourses from "../PopularCourses/PopularCourses";
 
 
 const Home = () => {
     return (
-        <div>
-          
-        </div>
+        <>
+          <HeroSection></HeroSection>
+          <PopularCourses></PopularCourses>
+        </>
     );
 };
 

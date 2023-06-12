@@ -7,8 +7,8 @@ import Dashboard from "../layout/dashboard";
 import AllUsers from "../pages/DashBoard/Admin/AllUsers/AllUsers"
 import AddCourses from "../pages/DashBoard/Instructor/AddCourses/AddCourses";
 import AllCourses from "../pages/DashBoard/Admin/AllCourses/AllCourses";
+import Courses from "../pages/Courses/Courses";
 import InstructorCourses from "../pages/DashBoard/Instructor/InstructorCourses/InstructorCourses";
-import Courses from "../pages/CLasses/Courses";
 import SelectedCourses from "../pages/DashBoard/Student/SelectedCourses/SelectedCourses";
 import Payment from "../pages/DashBoard/Student/Payment/Payment";
 

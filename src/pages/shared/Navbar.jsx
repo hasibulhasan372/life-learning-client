@@ -14,7 +14,8 @@ const Navbar = () => {
         setOpen(false);
     }
     return (
-        <div className="navbar-con flex justify-between items-center bg-sky-50 h-12 md:h-16 lg:h-[70px]  shadow-sm">
+        <div className="navbar-con bg-sky-50">
+            <div className="flex justify-between items-center  h-12 md:h-16 lg:h-[70px]  shadow-sm ">
             <div>
                 <Link to="/" className="flex md:gap-3 items-center">
                     <img src="" alt="" />
@@ -44,6 +45,7 @@ const Navbar = () => {
             {
                 open ? <button onClick={handleLogOut} className="btn btn-sm absolute top-[70px] right-0">Log Out</button> : ""
             }
+            </div>
         </div>
     );
 };
