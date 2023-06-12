@@ -21,7 +21,7 @@ const Payment = () => {
                 <h3 className="text-xl md:3xl lg:text-4xl font-bold mb-4 md:mb-6 lg:mb-12 bg-clip-text bg-gradient-to-r from-purple-600 to-red-500 text-transparent animate-bounce "> Payment </h3>
                 <div>
                     <Elements stripe={stripePromise}>
-                        <Checkout fee={fee}></Checkout>
+                        <Checkout price={fee}></Checkout>
                     </Elements>
                 </div>
             </div>

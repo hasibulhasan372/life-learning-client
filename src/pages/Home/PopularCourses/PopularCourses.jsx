@@ -2,12 +2,15 @@ import { toast } from "react-hot-toast";
 import CoursesForAllCard from "../../../components/Card/coursesForAllCard";
 import useAuth from "../../../hooks/useAuth";
 import usePopularCourses from "../../../hooks/usePopularCourses";
+import { useNavigate } from "react-router-dom";
 
 
 const PopularCourses = () => {
     const [popularCourses] = usePopularCourses();
-    const {user} = useAuth()
+    const {user} = useAuth();
+    const navigate = useNavigate();
     const handleEnrollCourses = (course) =>{
+      if(user && user?.email){
         const { courseName, instructorName, fee, image, _id} = course
         const selectedCourse = {
                 name: courseName,
@@ -30,7 +33,12 @@ const PopularCourses = () => {
                 toast.success("You have selected the course for enrollment")
             }
         })
-    }
+      }
+      else{
+        toast.error("Please Login first")
+        navigate("/login")
+      }
+    };
     return (
         <div className="py-6 sm:py-8 md:py-10 lg:py-16">
            <div className="content-con">

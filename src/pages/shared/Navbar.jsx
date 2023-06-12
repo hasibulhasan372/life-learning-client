@@ -27,7 +27,7 @@ const Navbar = () => {
                <li className="menu-bar">  <Link to='/'>Home</Link></li>
                 <li className=" menu-bar"> <Link to='/instructors' className="">Instructors</Link></li>
                 <li className=" menu-bar"><Link to='/courses' className="">Courses</Link></li>
-                <li className="menu-bar"> <Link to='/dashboard' className="">Dashboard</Link></li>
+               {user?.email &&  <li className="menu-bar"> <Link to='/dashboard' className="">Dashboard</Link></li>}
                </ul>
             </div>
             <div>

@@ -14,6 +14,7 @@ import Payment from "../pages/DashBoard/Student/Payment/Payment";
 import Instructors from "../pages/Instructors/Instructors";
 import PrivateRouter from "./PrivateRouter";
 import AdminRouter from "./AdminRouter";
+import InstructorRouter from "./InstructorRouter";
 
 const router = createBrowserRouter([
     {
@@ -59,11 +60,11 @@ const router = createBrowserRouter([
             // For Instructor 
             {
                 path: "addCourses",
-                element: <AddCourses></AddCourses>
+                element: <InstructorRouter><AddCourses></AddCourses></InstructorRouter>
             },
             {
                 path:"instructorCourses",
-                element: <InstructorCourses></InstructorCourses>
+                element: <InstructorRouter><InstructorCourses></InstructorCourses></InstructorRouter>
             },
             // For Admin 
             
