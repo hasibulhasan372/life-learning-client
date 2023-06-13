@@ -8,11 +8,13 @@ const useCourses = () => {
     const [axiosSecure] = useAxiosSecure()
 
     const {data: courses = [], refetch} = useQuery({
+        
         queryKey: ["courses"],
         enabled: !loading,
         queryFn: async() =>{
             const res = await axiosSecure.get(`/courses`)
             return res.data;
+            
         }
        })
        return [courses, refetch]

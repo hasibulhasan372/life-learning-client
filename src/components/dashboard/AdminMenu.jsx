@@ -1,13 +1,20 @@
-import { FaArrowRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
+import { FaLanguage, FaUserAlt } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 
 const AdminMenu = () => {
     return (
         <div>
             <ul>
-                <li className="md:text-lg font-medium md:font-semibold "><Link to="/dashboard/allUsers" className="gap-2">All Users <FaArrowRight className="inline-block text-base text-slate-400"></FaArrowRight> </Link></li>
-                <li><Link to="/dashboard/allCourses">All Course</Link></li>
+                <li className="menu-bar">
+                    <NavLink to="/dashboard/allUsers" className={({ isActive }) => isActive ? "text-purple-500 flex items-center gap-2" : "flex items-center gap-2"}>
+                      <FaUserAlt className=""></FaUserAlt>  All Users 
+                    </NavLink></li>
+
+                <li className="menu-bar ">
+                    <NavLink to="/dashboard/allCourses" className={({ isActive }) => isActive ? "text-purple-500 flex items-center gap-2" : "flex items-center gap-2"}>
+                    <FaLanguage></FaLanguage> All Course</NavLink></li>
             </ul>
         </div>
     );

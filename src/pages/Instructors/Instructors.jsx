@@ -1,3 +1,4 @@
+import { Slide } from "react-awesome-reveal";
 import PopularInstructorCard from "../../components/Card/PopularInstructorCard";
 import useAuth from "../../hooks/useAuth";
 import useInstructor from "../../hooks/useInstructor";
@@ -7,7 +8,7 @@ const Instructors = () => {
     const [instructors] = useInstructor();
     const {loading} = useAuth()
     return (
-        <div>
+        <Slide triggerOnce>
             <div className="py-6 sm:py-8 md:py-10 lg:py-16">
             <div className="content-con">
                 <div>
@@ -21,7 +22,7 @@ const Instructors = () => {
             </div>
 
         </div>
-        </div>
+        </Slide>
     );
 };
 

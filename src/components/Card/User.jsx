@@ -3,14 +3,13 @@ import {GiTeacher} from "react-icons/gi"
 
 const User = ({user, index, handleMakeAdmin,  handleMakeInstructor, handleDeleteUser}) => {
     const {name, photo, role, email, _id} = user;
-    // TODO: Use Conditional of role 
     return (
         <tr className="">
         <td className="px-6 py-4 text-sm text-gray-500">
             {index + 1}
         </td>
         <td className="px-6 py-4 ">
-           <img src={photo} alt="User image" className="w-12 md:w-20 h-20 object-cover" />
+           <img src={photo} alt="User image" className="w-12 md:w-16 h-12 object-cover" />
         </td>
         <td className="px-6 py-4">
             <div className="text-sm text-gray-900">

@@ -1,14 +1,15 @@
+import { Fade } from "react-awesome-reveal";
 import { Link, NavLink } from "react-router-dom";
 
 
 const Footer = () => {
     return (
-        <div className=" ">
+        <Fade delay={1e3} cascade damping={1e-1} >
             <div className="content-con border bg-[#161616] py-4 sm:py-6 md:py-8 lg:py-16 px-6">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 justify-between gap-4 lg:gap-12">
                     <div>
-                        <Link to="/" className="flex md:gap-3 items-center">
-                            <img src="" alt="" />
+                        <Link to="/" className="flex items-center">
+                            <img src="https://i.ibb.co/5rjWfBL/favicon.png" alt="" />
                             <h2 className="logo-name">Life Learning</h2>
                         </Link>
                         <div className="pl-4 mt-2 md:mt-4">
@@ -44,7 +45,7 @@ const Footer = () => {
                 </div>
             </div>
 
-        </div>
+        </Fade>
     );
 };
 

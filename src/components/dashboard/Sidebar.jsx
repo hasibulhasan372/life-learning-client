@@ -3,7 +3,8 @@ import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import AdminMenu from "./AdminMenu";
 import useAdmin from '../../hooks/useAdmin'
-import { FaUserAlt } from "react-icons/fa";
+import { FaChalkboardTeacher, FaHome, FaUserAlt } from "react-icons/fa";
+import { SiCoursera } from "react-icons/si";
 import InstructorMenu from "./InstructorMenu";
 import StudentMenu from "./StudentMenu";
 import useVerifyInstructor from "../../hooks/useVerifyInstructor";
@@ -30,11 +31,18 @@ const Sidebar = () => {
                         </li>
                     </div>
                     <div className="text-left md:pl-7 lg:pl-12">
-                        {isAdmin ? <AdminMenu></AdminMenu> : 
-                               ( <div>{ isInstructor ? <InstructorMenu></InstructorMenu> :
-                               <StudentMenu></StudentMenu>}</div>)
-                        }
+                        {isAdmin ?
+                            <AdminMenu></AdminMenu> :
+                            (
+                                <div>{isInstructor ? <InstructorMenu></InstructorMenu> :
+                                    <StudentMenu></StudentMenu>}</div>
+                            )}
 
+                    </div>
+                    <div className="md:mt-12 lg:mt-20 border-t-4 border-sky-500 md:pt-6 lg:pt-10 text-left md:pl-7 lg:pl-12">
+                        <li className="menu-bar">  <Link to='/' className="gap-2 flex items-center"> <FaHome></FaHome> Home</Link></li>
+                        <li className=" menu-bar"> <Link to='/instructors' className="gap-2 flex items-center"><FaChalkboardTeacher></FaChalkboardTeacher> Instructors</Link></li>
+                        <li className=" menu-bar"><Link to='/courses' className="gap-2 flex items-center"><SiCoursera></SiCoursera> Courses</Link></li>
                     </div>
                 </div>
                 <div className="md:pl-7 lg:pl-12">

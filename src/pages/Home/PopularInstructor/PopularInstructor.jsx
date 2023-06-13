@@ -1,4 +1,5 @@
 // import { useEffect, useState } from "react";
+import { Fade} from "react-awesome-reveal";
 import PopularInstructorCard from "../../../components/Card/PopularInstructorCard";
 import useAuth from "../../../hooks/useAuth";
 import usePopularInstructor from "../../../hooks/usePopularInstructor";
@@ -8,7 +9,8 @@ const PopularInstructor = () => {
  const [popularInstructors] = usePopularInstructor();
  const {loading} = useAuth();
     return (
-        <div className="py-6 sm:py-8 md:py-10 lg:py-16">
+        <Fade delay={1e3} cascade damping={1e-1}>
+            <div className="py-6 sm:py-8 md:py-10 lg:py-16">
             <div className="content-con">
                 <div>
                     <h2 className="text-lg sm:text-xl md:text3xl lg:text-4xl font-bold text-green-500 text-center">Popular Instructors</h2>
@@ -19,8 +21,8 @@ const PopularInstructor = () => {
                     }
                 </div>
             </div>
-
         </div>
+        </Fade>
     );
 };
 

@@ -1,52 +1,45 @@
 import { toast } from "react-hot-toast";
-import { deleteUser, makeAdmin, makeInstructor} from "../../../../api/auth";
 import User from "../../../../components/Card/User";
 import useGetUsers from "../../../../hooks/useGetUsers";
 import useAuth from "../../../../hooks/useAuth";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 
 const AllUsers = () => {
     const [allUsers, refetch] = useGetUsers();
-    const {loading} = useAuth();
+    const {user, loading} = useAuth();
+    const [axiosSecure] = useAxiosSecure()
 
 
     const handleMakeAdmin = (id) =>{
-        //TODO: Axios Secure 
-        makeAdmin(id)
-        .then(data => {
-            if(data.modifiedCount > 0){
-                refetch();
-                toast.success("You are Admin Now")
+        
+        axiosSecure.patch(`/users/admin/${id}`)
+        .then(res => {
+            if(res.data.modifiedCount > 0){
+                refetch()
+                toast.success(`User is Admin Now`)
             }
-        })
-        .catch(error =>{
-            toast.error(error.message)
         })
     }
     const handleInstructor = (id) =>{
-        //TODO: Axios Secure 
-        makeInstructor(id)
-        .then(data => {
-            if(data.modifiedCount > 0){
-                refetch();
-                toast.success("You are Instructor Now")
+        
+        axiosSecure.patch(`/users/instructor/${id}`)
+        .then(res => {
+            if(res.data.modifiedCount > 0){
+                refetch()
+                toast.success(`User is Instructor now`)
             }
-        })
-        .catch(error =>{
-            toast.error(error.message)
         })
     };
 
     const handleDeleteUser = (id) =>{
-        //TODO: Axios Secure 
-        deleteUser(id)
-        .then(data =>{
-            if(data.deletedCount > 0){
-                refetch();
-                toast.success("Deleted the user successfully");
+        axiosSecure.delete(`/users/${id}`)
+        .then(res => {
+            if(res.data.deletedCount > 0){
+                refetch()
+                toast.success(`${user?.displayName} is deleted`)
             }
         })
-        .catch(error =>toast.error(error.message))
     };
 
 

@@ -18,31 +18,4 @@ export const savedUser = async (user)=>{
 
 };
 
-// Make Admin API
-
-export const makeAdmin = async (id) =>{
-    const res = await fetch (`${import.meta.env.VITE_LOCAL_HOST}/users/admin/${id}`,{
-        method: "PATCH"
-    })
-    const data = await res.json()
-    return data; 
-}
-// Make Instructor API
-
-export const makeInstructor = async (id) =>{
-    const res = await fetch (`${import.meta.env.VITE_LOCAL_HOST}/users/instructor/${id}`,{
-        method: "PATCH"
-    })
-    const data = await res.json()
-    return data; 
-}
-
-// Delete User
-export const deleteUser = async (id) =>{
-    const res = await fetch (`${import.meta.env.VITE_LOCAL_HOST}/users/${id}`,{
-        method: "DELETE"
-    })
-    const data = await res.json()
-    return data; 
-}
 

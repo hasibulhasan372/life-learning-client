@@ -2,31 +2,28 @@
 import { toast } from "react-hot-toast";
 import AllCoursesCard from "../../../../components/Card/AllCoursesCard";
 import useCourses from "../../../../hooks/useCourses"
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 
 const AllCourses = () => {
     const [courses, refetch] = useCourses();
+    const [axiosSecure] = useAxiosSecure();
 
 
     const handleApproved = (id) =>{
-       fetch (`${import.meta.env.VITE_LOCAL_HOST}/courses/approved/${id}`,{
-            method: "PATCH"
-        })
-       .then(res => res.json())
-       .then(data => {
-        if(data.modifiedCount > 0){
+
+        axiosSecure.patch(`/courses/approved/${id}`)
+       .then(res => {
+        if(res.data.modifiedCount > 0){
                 refetch();
                 toast.success("The Courses is approved Now ")
         }
        })
     };
     const handleDeny = (id) =>{
-       fetch (`${import.meta.env.VITE_LOCAL_HOST}/courses/deny/${id}`,{
-            method: "PATCH"
-        })
-       .then(res => res.json())
-       .then(data => {
-        if(data.modifiedCount > 0){
+       axiosSecure.patch(`/courses/deny/${id}`)
+       .then(res => {
+        if(res.data.modifiedCount > 0){
                 refetch();
                 toast.success("The Courses is Denied")
         }

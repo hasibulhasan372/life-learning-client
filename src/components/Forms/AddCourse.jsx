@@ -2,11 +2,14 @@ import { useForm } from "react-hook-form";
 import { FaStar } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const AddClass = () => {
     const { user } = useAuth()
     const { register, handleSubmit } = useForm();
+    const [axiosSecure] = useAxiosSecure()
+
     const onSubmit = data => {
         const { availableSeat, className, classPhoto, instructorEmail, instructorName, price } = (data);
         const classInfo = {courseName: className,
@@ -18,17 +21,9 @@ const AddClass = () => {
             status:"pending",
             enrolled:0,
         }
-        //TODO:Need to Secure by Axios secure 
-        fetch('https://life-learning-server.vercel.app/',{
-            method: "POST",
-            headers: {
-                "content-type" : "application/json"
-            },
-            body: JSON.stringify(classInfo)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.insertedId){
+        axiosSecure.post('/courses',classInfo)
+        .then(res => {
+            if(res.data.insertedId){
                 toast.success("Your Course in uploaded and wait for the admin confirmation")
             }
         })
