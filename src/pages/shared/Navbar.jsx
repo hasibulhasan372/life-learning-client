@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import {FaUserAlt} from "react-icons/fa"
 import { useState } from "react";
+import useSelectCourse from "../../hooks/useSelectCourse";
 
 
 const Navbar = () => {
     const {user, logOut} = useAuth();
     const [open, setOpen] = useState(false);
+    const [selectCourses] = useSelectCourse()
    
 
     const handleLogOut = ()=>{
@@ -27,7 +29,7 @@ const Navbar = () => {
                <li className="menu-bar">  <Link to='/'>Home</Link></li>
                 <li className=" menu-bar"> <Link to='/instructors' className="">Instructors</Link></li>
                 <li className=" menu-bar"><Link to='/courses' className="">Courses</Link></li>
-               {user?.email &&  <li className="menu-bar"> <Link to='/dashboard' className="">Dashboard</Link></li>}
+               {user?.email &&  <li className="menu-bar relative"> <Link to='/dashboard' className="">Dashboard {selectCourses.length > 0 && <small className="absolute -top-2 text-sky-600 font-bold">+{selectCourses.length}</small>} </Link></li>}
                </ul>
             </div>
             <div>

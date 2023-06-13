@@ -16,6 +16,7 @@ import PrivateRouter from "./PrivateRouter";
 import AdminRouter from "./AdminRouter";
 import InstructorRouter from "./InstructorRouter";
 import EnrolledCourses from "../pages/DashBoard/Student/EnrolledCourses/EnrolledCourses";
+import MyPayment from "../pages/DashBoard/Student/MyPayment/MyPayment";
 
 const router = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
                 path:"enrolledCourses",
                 element:<EnrolledCourses></EnrolledCourses>
 
+            },
+            {
+                path: "myPayment",
+                element: <MyPayment></MyPayment>
             },
             // For Instructor 
             {

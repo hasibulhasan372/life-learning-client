@@ -1,8 +1,8 @@
-import EnrollmentCourseCard from "../../../../components/Card/EnrollmentCourseCard";
+import PaymentCard from "../../../../components/Card/PaymentCard";
 import useEnrolledCourses from "../../../../hooks/useEnrolledCourses";
 
 
-const EnrolledCourses = () => {
+const MyPayment = () => {
     const [enrolledCourses] = useEnrolledCourses();
     return (
         <div>
@@ -17,16 +17,13 @@ const EnrolledCourses = () => {
 
                                 </th>
                                 <th className="table-head">
-
-                                </th>
-                                <th className="table-head">
                                     Course Name
                                 </th>
                                 <th className="table-head">
-                                    Instructor Name
+                                    Transaction Id
                                 </th>
                                 <th className="table-head">
-                                    Enrollment Date
+                                    Transaction Date
                                 </th>
 
                                 <th className="table-head">
@@ -36,11 +33,11 @@ const EnrolledCourses = () => {
                         </thead>
                         <tbody className=" border-b-[2px]">
                             {
-                                 enrolledCourses.map((course, index) => <EnrollmentCourseCard
+                                 enrolledCourses.map((course, index) => <PaymentCard
                                 key={course._id}
                                 course={course}
                                 index={index}
-                            ></EnrollmentCourseCard>) 
+                            ></PaymentCard>) 
                             }
                         </tbody>
                     </table>
@@ -48,7 +45,7 @@ const EnrolledCourses = () => {
 
             </div> : 
             <div className="flex justify-center">
-                <h2 className="text-4xl font-bold">Please Enroll Courses</h2>
+                <h2 className="text-4xl font-bold">You do not have payment history</h2>
             </div>
 
             }
@@ -57,4 +54,4 @@ const EnrolledCourses = () => {
     );
 };
 
-export default EnrolledCourses;
+export default MyPayment;

@@ -73,6 +73,7 @@ const Checkout = ({price,paymentCourse, refetch}) => {
                 courseName: paymentCourse.name,
                 status: "paid",
                 image: paymentCourse.image,
+                instructorName: paymentCourse.instructorName,
 
             }
             axiosSecure.post("/payment", paymentInfo)

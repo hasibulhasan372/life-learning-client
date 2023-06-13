@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const PopularCourses = () => {
     const { loading } = useAuth();
-    const [popularCourses] = usePopularCourses();
+    const [popularCourses, refetch] = usePopularCourses();
     const { user } = useAuth();
     const navigate = useNavigate();
     const handleEnrollCourses = (course) => {
@@ -31,6 +31,7 @@ const PopularCourses = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
+                        refetch()
                         toast.success("You have selected the course for enrollment")
                     }
                 })
