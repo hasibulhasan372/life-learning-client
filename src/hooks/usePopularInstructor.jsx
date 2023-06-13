@@ -6,7 +6,7 @@ const usePopularInstructor = () => {
     const {loading} = useAuth();
     const {data: popularInstructors = []} = useQuery({
         queryKey: ["popularInstructors"],
-        enabled: loading,
+        enabled: !loading,
         queryFn: async() =>{
             const res = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/popularInstructors`)
             return res.json()

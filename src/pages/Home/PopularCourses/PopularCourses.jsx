@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 import useVerifyInstructor from "../../../hooks/useVerifyInstructor";
 import useAdmin from "../../../hooks/useAdmin";
 import { Fade } from "react-awesome-reveal";
+import useSelectCourse from "../../../hooks/useSelectCourse";
 
 const PopularCourses = () => {
-    const { loading } = useAuth();
-    const [popularCourses, refetch] = usePopularCourses();
-    const { user } = useAuth();
+    const [popularCourses] = usePopularCourses();
+    const [, refetch] = useSelectCourse()
+    const { user, loading } = useAuth();
     const navigate = useNavigate();
     const [isInstructor] =useVerifyInstructor();
     const [isAdmin] = useAdmin();
@@ -25,6 +26,7 @@ const PopularCourses = () => {
                 courseId: _id,
                 email: user?.email,
             }
+
             fetch(`${import.meta.env.VITE_LOCAL_HOST}/selectedCourses`, {
                 method: "POST",
                 headers: {
@@ -36,7 +38,7 @@ const PopularCourses = () => {
                 .then(data => {
                     if (data.insertedId) {
                         refetch();
-                        toast.success("You have selected the course for enrollment")
+                        toast.success("You have selected the course for enrollment");
                     }
                 })
         }

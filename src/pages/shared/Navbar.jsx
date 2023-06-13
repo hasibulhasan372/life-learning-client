@@ -3,7 +3,6 @@ import useAuth from "../../hooks/useAuth";
 import { FaUserAlt } from "react-icons/fa"
 import { useState } from "react";
 import useSelectCourse from "../../hooks/useSelectCourse";
-import { Fade } from "react-awesome-reveal";
 
 
 const Navbar = () => {
@@ -17,7 +16,7 @@ const Navbar = () => {
         setOpen(false);
     }
     return (
-        <Fade delay={1e3} cascade damping={1e-1}>
+        
             <div className="navbar-con bg-sky-50">
             <div className="flex justify-between items-center  h-12 md:h-16 lg:h-[70px]  shadow-sm ">
                 <div>
@@ -51,7 +50,6 @@ const Navbar = () => {
                 }
             </div>
         </div>
-        </Fade>
     );
 };
 

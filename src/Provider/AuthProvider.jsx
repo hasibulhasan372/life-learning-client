@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged,signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase/firbase.config";
 import axios from "axios";
 export const AuthContext = createContext(null);
@@ -29,10 +29,7 @@ const AuthProvider = ({children}) => {
             displayName: name, photoURL: photo 
         })
     }
-    const passwordReset = (email) =>{
-        setLoading(true);
-        return sendPasswordResetEmail(auth, email)
-    };
+ 
     useEffect(() =>{
         const unSubscribe = onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser);
@@ -40,7 +37,8 @@ const AuthProvider = ({children}) => {
                
                 axios.post(`${import.meta.env.VITE_LOCAL_HOST}/jwt`,{email: currentUser.email})
                 .then(data =>{
-                    localStorage.setItem("access-token",data.data.token);
+                    localStorage.setItem("access-token", data.data.token);
+                   
                 })
             }
             else{
@@ -68,8 +66,7 @@ const AuthProvider = ({children}) => {
         createUser,
         googleSignIn,
         logIn,
-        logOut,
-        passwordReset
+        logOut
 
     }
     return (
