@@ -1,20 +1,11 @@
-import { useEffect, useState } from "react";
-import useGetUsers from "../../hooks/useGetUsers";
-import useAuth from "../../hooks/useAuth";
 
-
+import useVerifyInstructor from "../../hooks/useVerifyInstructor";
+import useAdmin from "../../hooks/useAdmin";
 
 const CoursesForAllCard = ({ course,handleEnrollCourses}) => {
     const { courseName, instructorName, fee, image, seats} = (course);
-    const [visitedUser, setVisitedUser] = useState(null)
-    const { user } = useAuth();
-    const [allUsers] = useGetUsers();
-
-    useEffect(() =>{
-        const getUser = allUsers.find(u => u?.email === user?.email)
-        setVisitedUser(getUser)
-    },[allUsers, user])
-    
+    const [isInstructor] =useVerifyInstructor();
+    const [isAdmin] = useAdmin();
     return (
             <div className="card card-compact w-72 bg-base-100 shadow-xl mx-auto">
                 <figure><img src={image} alt="Course Banner" className="w-full" /></figure>
@@ -26,7 +17,7 @@ const CoursesForAllCard = ({ course,handleEnrollCourses}) => {
                     <div className="card-actions justify-end">
                         <button onClick={()=>handleEnrollCourses(course)}
                         className="btn btn-primary capitalize" 
-                        disabled={visitedUser?.role === "admin" || visitedUser?.role === "instructor"} >Enrolled Now</button>
+                        disabled={isAdmin || isInstructor } >Enrolled Now</button>
                     </div>
                 </div>
             </div>

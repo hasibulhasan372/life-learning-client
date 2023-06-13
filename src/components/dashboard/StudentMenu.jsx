@@ -6,6 +6,7 @@ const StudentMenu = () => {
         <div>
             <ul>
                 <li><NavLink to="/dashboard/selectedCourses">Selected Courses</NavLink></li>
+                <li><NavLink to="/dashboard/enrolledCourses">Enrolled Courses</NavLink></li>
             </ul>
         </div>
     );

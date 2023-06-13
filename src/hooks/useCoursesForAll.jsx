@@ -3,7 +3,7 @@ import useCourses from "./useCourses";
 
 
 const useCoursesForAll = () => {
-    const [courses] = useCourses()
+    const [courses] = useCourses();
     const {data: coursesForAll = []} = useQuery({
         queryKey: ["coursesForAll", courses?.status],
         queryFn: async() =>{

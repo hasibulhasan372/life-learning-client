@@ -2,10 +2,12 @@ import { toast } from "react-hot-toast";
 import { deleteUser, makeAdmin, makeInstructor} from "../../../../api/auth";
 import User from "../../../../components/Card/User";
 import useGetUsers from "../../../../hooks/useGetUsers";
+import useAuth from "../../../../hooks/useAuth";
 
 
 const AllUsers = () => {
     const [allUsers, refetch] = useGetUsers();
+    const {loading} = useAuth();
 
 
     const handleMakeAdmin = (id) =>{
@@ -81,7 +83,8 @@ const AllUsers = () => {
                         </tr>
                     </thead>
                     <tbody className=" border-b-[2px]">
-                        {
+                        { loading ? <span className="loading loading-bars loading-lg absolute mx-auto"></span> :
+
                             allUsers.map((user, index) => <User 
                             user={user} 
                             key={user._id} 

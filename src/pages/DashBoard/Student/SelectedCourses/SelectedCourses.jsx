@@ -1,16 +1,26 @@
 
 import useSelectCourse from "../../../../hooks/useSelectCourse";
 import SelectedCoursesCard from "../../../../components/Card/SelectedCoursesCard";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { toast } from "react-hot-toast";
 
 
 const SelectedCourses = () => {
     const [selectCourses, refetch] = useSelectCourse();
+    const [axiosSecure] = useAxiosSecure()
 
     //  Delete Selected Course
-     const handleDelete = (id) =>{
-        
-     };
-    
+    const handleDelete = (id) => {
+        axiosSecure.delete(`/selectedCourses/${id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.deletedCount > 0) {
+                    refetch();
+                    toast.success("Selected Course Deleted Successfully")
+                }
+            })
+    };
+
     return (
         <div>
             <div className="flex flex-col justify-center mt-4 md:mt-10 lg:mt-20 overflow-x-scroll lg:overflow-x-hidden">
@@ -23,7 +33,7 @@ const SelectedCourses = () => {
 
                                     </th>
                                     <th className="table-head">
-                                      
+
                                     </th>
                                     <th className="table-head">
                                         Course Name
@@ -31,38 +41,38 @@ const SelectedCourses = () => {
                                     <th className="table-head">
                                         Instructor Name
                                     </th>
-                                   
+
                                     <th className="table-head">
-                                       Course Fee
+                                        Course Fee
                                     </th>
-                                   
+
                                     <th className="table-head">
                                         Payment
                                     </th>
                                     <th className="table-head">
-                                      Action
+                                        Action
                                     </th>
-                                   
+
                                 </tr>
                             </thead>
                             <tbody className=" border-b-[2px]">
                                 {
                                     selectCourses.map((course, index) => <SelectedCoursesCard
-                                    key={course._id}
-                                    course={course} 
-                                    index={index}
-                                    handleDelete={handleDelete}
+                                        key={course._id}
+                                        course={course}
+                                        index={index}
+                                        handleDelete={handleDelete}
                                     ></SelectedCoursesCard>)
                                 }
                             </tbody>
                         </table>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     );
-    
+
 };
 
 export default SelectedCourses;

@@ -19,7 +19,7 @@ const AddClass = () => {
             enrolled:0,
         }
         //TODO:Need to Secure by Axios secure 
-        fetch('http://localhost:5000/courses',{
+        fetch('https://life-learning-server.vercel.app/',{
             method: "POST",
             headers: {
                 "content-type" : "application/json"

@@ -1,10 +1,12 @@
 // import { useEffect, useState } from "react";
 import PopularInstructorCard from "../../../components/Card/PopularInstructorCard";
+import useAuth from "../../../hooks/useAuth";
 import usePopularInstructor from "../../../hooks/usePopularInstructor";
 
 
 const PopularInstructor = () => {
- const [popularInstructors] = usePopularInstructor()
+ const [popularInstructors] = usePopularInstructor();
+ const {loading} = useAuth();
     return (
         <div className="py-6 sm:py-8 md:py-10 lg:py-16">
             <div className="content-con">
@@ -13,7 +15,7 @@ const PopularInstructor = () => {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  xl:grid-cols-4 justify-center items-center gap-6 mt-4 md:mt-8 lg:mt-12">
                     {
-                        popularInstructors.map(instructor => <PopularInstructorCard instructor={instructor} key={instructor._id}></PopularInstructorCard>)
+                      loading ? <span className="loading loading-spinner loading-lg mx-auto justify-center"></span>   :  popularInstructors.map(instructor => <PopularInstructorCard instructor={instructor} key={instructor._id}></PopularInstructorCard>)
                     }
                 </div>
             </div>

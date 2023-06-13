@@ -30,11 +30,10 @@ const Sidebar = () => {
                         </li>
                     </div>
                     <div className="text-left md:pl-7 lg:pl-12">
-                        {isAdmin ? <AdminMenu></AdminMenu> : <>{
-                            isInstructor ?
-                                <InstructorMenu></InstructorMenu> :
-                                <StudentMenu></StudentMenu>
-                        }</>}
+                        {isAdmin ? <AdminMenu></AdminMenu> : 
+                               ( <div>{ isInstructor ? <InstructorMenu></InstructorMenu> :
+                               <StudentMenu></StudentMenu>}</div>)
+                        }
 
                     </div>
                 </div>

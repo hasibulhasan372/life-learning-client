@@ -7,7 +7,7 @@ const AdminRouter = ({children}) => {
     const [isAdmin, isAdminLoading] = useAdmin();
     const location = useLocation();
     if(loading || isAdminLoading){
-        return <h3>Loading....</h3>
+        return <span className="loading loading-bars loading-lg"></span>;
     }
     if(user && isAdmin){
         return children

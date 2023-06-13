@@ -15,6 +15,7 @@ import Instructors from "../pages/Instructors/Instructors";
 import PrivateRouter from "./PrivateRouter";
 import AdminRouter from "./AdminRouter";
 import InstructorRouter from "./InstructorRouter";
+import EnrolledCourses from "../pages/DashBoard/Student/EnrolledCourses/EnrolledCourses";
 
 const router = createBrowserRouter([
     {
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
             {
                 path:"payment/:id",
                 element:<Payment></Payment>
+            },
+            {
+                path:"enrolledCourses",
+                element:<EnrolledCourses></EnrolledCourses>
+
             },
             // For Instructor 
             {

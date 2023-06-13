@@ -3,19 +3,19 @@ import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 
 
-const useSelectCourse = () => {
+const useEnrolledCourses = () => {
     const {user, loading} = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const {data: selectCourses = [], refetch} = useQuery({
-        queryKey: ["selectCourses", user?.email],
+    const {data: enrolledCourses = [], refetch} = useQuery({
+        queryKey: ["enrolledCourses", user?.email],
         enabled: !loading && !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async() =>{
-            const res = await axiosSecure.get(`/selectedCourses?email=${user?.email}`)
+            const res = await axiosSecure.get(`/enrolledCourses?email=${user?.email}`)
             return res.data
         }
 
        })
-       return [selectCourses, refetch]
+       return [enrolledCourses, refetch]
 };
 
-export default useSelectCourse;
+export default useEnrolledCourses;

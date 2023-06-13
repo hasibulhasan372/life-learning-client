@@ -7,7 +7,7 @@ const InstructorRouter = ({children}) => {
     const [isInstructor, isInstructorLoading] = useVerifyInstructor();
     const location = useLocation();
     if(loading || isInstructorLoading){
-        return <h3>Loading....</h3>
+        return <span className="loading loading-bars loading-lg mx-auto absolute top-1/2"></span>;
     }
     if(user && isInstructor){
         return children
