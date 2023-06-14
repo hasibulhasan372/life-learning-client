@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import GoogleLogin from "../shared/GoogleLogin";
+import { FaEye } from "react-icons/fa";
+import { useState } from "react";
 
 const LogIn = () => {
     const { logIn} = useAuth();
@@ -10,6 +12,7 @@ const LogIn = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    const [open, setOpen] = useState(false)
 
     const onSubmit = (data) => {
         logIn(data.email, data.password)
@@ -24,10 +27,11 @@ const LogIn = () => {
             toast.error(error.message)
         })
     };
+    
     return (
-        <div className="content-con py-5 sm:py-7 md:py-10 lg:py-20 lg:px-7 bg-[#d9d0dc]">
-            <div>
-                <form onSubmit={handleSubmit(onSubmit)}  className="bg-white px-6  md:px-8 lg:px-12 md:w-1/2 md:mx-auto lg:w-1/3 lg:mx-0 py-6 md:rounded-md">
+        <div className="content-con py-5 sm:py-7 md:py-10 lg:py-20 lg:px-7 bg-[#d9d0dc] ">
+            <div className="relative w-full md:2/3 lg:w-1/3">
+                <form onSubmit={handleSubmit(onSubmit)}  className="bg-white px-6  md:px-8 lg:px-12 md:mx-auto lg:w-full lg:mx-0 py-6 md:rounded-md ">
                    
                     {/* Email Input  */}
                     <div className="form-control">
@@ -37,13 +41,13 @@ const LogIn = () => {
                         <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
                     </div>
                     {/* Password Input  */}
-                    <div className="form-control">
-                        <label className="label">
+                    <div className="form-control ">
+                        <label className="label ">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="password" {...register("password", { required: true })} name="password" placeholder="password" className="input input-bordered" />
-                     
+                        <input type={open? "text" : "password"} {...register("password", { required: true })} name="password" placeholder="password" className="input input-bordered " />
                     </div>
+                    
                     {/* Submit Button   */}
                     <button className="btn  mt-4 bg-gradient-to-r from-purple-600 to-red-500 font-bold text-xl md:text-2xl w-full text-white capitalize" type="submit"> Submit</button>
                     <div>
@@ -51,13 +55,8 @@ const LogIn = () => {
                     <GoogleLogin></GoogleLogin>
                     </div>
                 </form>
-               
-
-                <div>
-                    
-                </div>
-
-
+                <button className="absolute top-40 right-16 z-20" onClick={()=>setOpen(!open)}><FaEye></FaEye> </button>
+                
             </div>
         </div>
     );

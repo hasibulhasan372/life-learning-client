@@ -7,7 +7,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
     const [allUsers, refetch] = useGetUsers();
-    const {user, loading} = useAuth();
+    const { loading} = useAuth();
     const [axiosSecure] = useAxiosSecure()
 
 
@@ -37,7 +37,7 @@ const AllUsers = () => {
         .then(res => {
             if(res.data.deletedCount > 0){
                 refetch()
-                toast.success(`${user?.displayName} is deleted`)
+                toast.success(`User is deleted`)
             }
         })
     };

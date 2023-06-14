@@ -34,11 +34,9 @@ const AuthProvider = ({children}) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser);
             if(currentUser?.email){
-               
                 axios.post(`${import.meta.env.VITE_LOCAL_HOST}/jwt`,{email: currentUser.email})
                 .then(data =>{
                     localStorage.setItem("access-token", data.data.token);
-                   
                 })
             }
             else{

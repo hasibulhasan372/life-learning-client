@@ -7,13 +7,13 @@ import useSelectCourse from "../../hooks/useSelectCourse";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
-    const [open, setOpen] = useState(false);
+    const [logOpen, setLogOpen] = useState(false);
     const [selectCourses] = useSelectCourse()
 
 
     const handleLogOut = () => {
         logOut();
-        setOpen(false);
+        setLogOpen(false);
     }
     return (
         
@@ -37,7 +37,7 @@ const Navbar = () => {
                     {
                         user ? <>
                             {
-                                user && user?.photoURL ? <button onClick={() => setOpen(!open)}
+                                user && user?.photoURL ? <button onClick={() => setLogOpen(!logOpen)}
                                     className="relative"
                                 ><img src={user?.photoURL} alt="user" className=" w-7 h-7 md:w-12 md:h-12 rounded-full object-cover" /></button> : <FaUserAlt></FaUserAlt>
                             }
@@ -45,9 +45,13 @@ const Navbar = () => {
                             <NavLink to='/login' className="btn btn-sm  bg-gradient-to-r from-purple-600 to-red-500 text-white capitalize font-semibold">Login</NavLink>
                     }
                 </div>
+                {/* {
+                    logOpen && <button onClick={handleLogOut} className="btn btn-sm absolute top-[70px] right-0">Log Out</button> 
+                } */}
                 {
-                    open ? <button onClick={handleLogOut} className="btn btn-sm absolute top-[70px] right-0">Log Out</button> : ""
+                    logOpen ? <button onClick={()=>handleLogOut()}  className="btn btn-sm absolute top-[70px] right-0 z-10">Log Out</button> : <></>
                 }
+              
             </div>
         </div>
     );

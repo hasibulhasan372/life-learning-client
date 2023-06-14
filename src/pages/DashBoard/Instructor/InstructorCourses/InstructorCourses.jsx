@@ -1,18 +1,17 @@
 import { toast } from "react-hot-toast";
 import InstructorCoursesCard from "../../../../components/Card/InstructorCoursesCard";
 import useInstructorCourses from "../../../../hooks/useInstructorCourses";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 
 const InstructorCourses = () => {
     const [insCourses, refetch] = useInstructorCourses();
+    const [axiosSecure] = useAxiosSecure();
 
     const handleDelete = (id) =>{
-        fetch(`${import.meta.env.VITE_LOCAL_HOST}/courses/${id}`,{
-            method: "DELETE"
-        })
-        .then(res =>res.json())
-        .then(data =>{
-            if(data.deletedCount){
+        axiosSecure.delete(`/courses/${id}`)
+        .then(res =>{
+            if(res.data.deletedCount > 0){
                 refetch()
                 toast.success("Course deleted");
             }
