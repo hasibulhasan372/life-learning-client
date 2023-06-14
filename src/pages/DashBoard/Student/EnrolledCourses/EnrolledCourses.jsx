@@ -1,3 +1,4 @@
+import { Slide } from "react-awesome-reveal";
 import EnrollmentCourseCard from "../../../../components/Card/EnrollmentCourseCard";
 import useEnrolledCourses from "../../../../hooks/useEnrolledCourses";
 
@@ -5,7 +6,7 @@ import useEnrolledCourses from "../../../../hooks/useEnrolledCourses";
 const EnrolledCourses = () => {
     const [enrolledCourses] = useEnrolledCourses();
     return (
-        <div>
+        <Slide triggerOnce>
         <div className="flex flex-col justify-center mt-4 md:mt-10 lg:mt-20 overflow-x-scroll lg:overflow-x-hidden">
             {
                 enrolledCourses.length > 0 ? <div className="w-full lg:w-5/6 lg:mx-auto">
@@ -53,7 +54,7 @@ const EnrolledCourses = () => {
 
             }
         </div>
-    </div>
+    </Slide>
     );
 };
 

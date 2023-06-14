@@ -8,13 +8,13 @@ const useInstructorCourses = () => {
     const [axiosSecure] = useAxiosSecure()
     const {data: insCourses = [], refetch} = useQuery({
         queryKey: ["insCourses", user?.email],
-        enabled: !loading,
+        enabled: !loading && !!user?.email,
         queryFn: async() =>{
             const res = await axiosSecure.get(`/coursesInstructor?instructorEmail=${user?.email}`)
             return res.data;
         }
        })
-       return [insCourses, refetch]
+       return [insCourses, refetch];
 };
 
 export default useInstructorCourses;

@@ -11,11 +11,11 @@ const useSelectedCourseDelete = (id) => {
         enabled : !loading,
         queryFn: async() =>{
             const res = await axiosSecure.delete(`/selectedCourses/${id}`)
-            return res.data
+            return res.data;
         }
 
        })
-       return [deleteSelectCourses]
+       return [deleteSelectCourses];
 };
 
 export default useSelectedCourseDelete;

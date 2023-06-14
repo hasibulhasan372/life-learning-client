@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 
 
-const Checkout = ({price,paymentCourse, refetch,enrollCourseId}) => {
+const Checkout = ({price, paymentCourse, refetch, enrollCourseId}) => {
     const stripe = useStripe();
     const elements = useElements();
     const {user} = useAuth();
@@ -13,8 +13,7 @@ const Checkout = ({price,paymentCourse, refetch,enrollCourseId}) => {
     const [processing, setProcessing] = useState()
     const [axiosSecure] = useAxiosSecure();
     const [clientSecret, setClientSecret] = useState('');
-    const [transactionId, setTransactionId] = useState("")
-    // TODO:Payment Complete 
+    const [transactionId, setTransactionId] = useState("");
     useEffect(()=>{
         if(price > 0){
             axiosSecure.post("/create-payment-intent", {price})
@@ -83,11 +82,10 @@ const Checkout = ({price,paymentCourse, refetch,enrollCourseId}) => {
                     toast.success("You have enrolled the courses successfully");
                     axiosSecure.delete(`/selectedCourses/${paymentCourse._id}`)
                     .then(res => {
-                        console.log(res.data)
                         if (res.data.deletedCount > 0) {
+                            refetch()
                             axiosSecure.patch(`/courses/enrolled/${enrollCourseId}`)
                             .then(res =>{
-                                        console.log(res.data)
                                         if(res.data.modifiedCount > 0){
                                             toast.success("Enrollment Complete")
                                         }

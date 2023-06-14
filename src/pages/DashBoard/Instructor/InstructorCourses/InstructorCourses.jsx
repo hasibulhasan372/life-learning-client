@@ -2,6 +2,7 @@ import { toast } from "react-hot-toast";
 import InstructorCoursesCard from "../../../../components/Card/InstructorCoursesCard";
 import useInstructorCourses from "../../../../hooks/useInstructorCourses";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { Slide } from "react-awesome-reveal";
 
 
 const InstructorCourses = () => {
@@ -18,7 +19,7 @@ const InstructorCourses = () => {
         })
     }
     return (
-        <div>
+        <Slide triggerOnce>
         <div className="flex flex-col justify-center mt-4 md:mt-10 lg:mt-20 overflow-x-scroll lg:overflow-x-hidden">
             <div className="w-full lg:px-6 lg:mx-auto">
                 <div className="  ">
@@ -80,7 +81,7 @@ const InstructorCourses = () => {
                 </div>
             </div>
         </div>
-    </div>
+    </Slide>
     );
 };
 

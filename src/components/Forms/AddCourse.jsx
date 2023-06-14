@@ -33,9 +33,6 @@ const AddClass = () => {
         })
     };
 
-
-
-
     // Input Field Required Icon 
     const starIcon = <FaStar className="text-red-500 text-[8px]"></FaStar>
 

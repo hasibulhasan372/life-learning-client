@@ -5,6 +5,7 @@ import useCourses from "../../../../hooks/useCourses"
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useState } from "react";
 import FeedbackModal from "../../../../components/Modal/FeedbackModal";
+import { Slide } from "react-awesome-reveal";
 
 
 const AllCourses = () => {
@@ -43,7 +44,7 @@ const AllCourses = () => {
       
 
     return (
-        <div>
+        <Slide triggerOnce>
             <div className="flex flex-col justify-center mt-4 md:mt-10 lg:mt-20 overflow-x-scroll lg:overflow-x-hidden">
                 <div className="w-full lg:px-8 lg:mx-auto">
                     <div >
@@ -104,7 +105,7 @@ const AllCourses = () => {
                     <FeedbackModal isOpen={isOpen} closeModal={closeModal}></FeedbackModal>
                 </div>
             </div>
-        </div>
+        </Slide>
     );
 };
 

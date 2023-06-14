@@ -3,6 +3,7 @@ import useSelectCourse from "../../../../hooks/useSelectCourse";
 import SelectedCoursesCard from "../../../../components/Card/SelectedCoursesCard";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { toast } from "react-hot-toast";
+import { Slide } from "react-awesome-reveal";
 
 
 const SelectedCourses = () => {
@@ -22,7 +23,7 @@ const SelectedCourses = () => {
     };
 
     return (
-        <div>
+        <Slide triggerOnce>
             <div className="flex flex-col justify-center mt-4 md:mt-10 lg:mt-20 overflow-x-scroll lg:overflow-x-hidden">
                 {
                     selectCourses.length > 0 ?  <div className="w-full lg:w-5/6 lg:mx-auto">
@@ -75,7 +76,7 @@ const SelectedCourses = () => {
             </div>
                 }
             </div>
-        </div>
+        </Slide>
     );
 
 };

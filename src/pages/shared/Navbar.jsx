@@ -29,8 +29,8 @@ const Navbar = () => {
                 <div className="md:hidden transition duration-500">
                     <button onClick={() => setHamMenu(!hamMenu)}><FaBars></FaBars></button>
                 </div>
-                <div className={`absolute  transition duration-500 md:static bg-slate-100 z-50  lg:flex lg:pl-96 lg:justify-between lg:grow 
-                ${hamMenu ? "flex flex-col bg-slate-100 top-12 right-0 w-1/2 pl-4 space-y-2 pb-2" : "-top-44 right-0"}`}>
+                <div className={`absolute  transition duration-500 md:static bg-slate-100 md:bg-none z-50  lg:flex lg:pl-96 lg:justify-between lg:grow 
+                ${hamMenu ? "flex flex-col bg-slate-100 md:bg-none top-12 right-0 w-1/2 pl-4 space-y-2 pb-2" : "-top-44 right-0"}`}>
 
                     <ul className={`md:hover:transition md:hover:duration-500 md:space-x-6 lg:space-x-10  lg:flex lg:items-center ${hamMenu ? "flex flex-col space-y-2" : ""} `}>
                         <li className={`menu-bar `}>  <NavLink to='/' className={({ isActive }) => isActive ? "text-purple-500" : ""}>Home</NavLink></li>

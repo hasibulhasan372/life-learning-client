@@ -15,7 +15,7 @@ const useSelectCourse = () => {
         }
 
        })
-       return [selectCourses, refetch]
+       return [selectCourses, refetch];
 };
 
 export default useSelectCourse;

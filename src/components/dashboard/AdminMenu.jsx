@@ -1,8 +1,6 @@
 
 import { FaLanguage, FaUserAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-
-
 const AdminMenu = () => {
     return (
         <div>

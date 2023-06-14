@@ -12,7 +12,7 @@ const usePopularInstructor = () => {
             return res.json()
         }
        })
-       return [popularInstructors]
+       return [popularInstructors];
 };
 
 export default usePopularInstructor;

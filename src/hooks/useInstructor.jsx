@@ -9,7 +9,7 @@ const useInstructor = () => {
             return res.json()
         }
        })
-       return [instructors]
+       return [instructors];
 };
 
 export default useInstructor;

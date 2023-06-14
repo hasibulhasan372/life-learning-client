@@ -18,7 +18,7 @@ const Sidebar = () => {
         navigate("/")
     }
     return (
-        <div className=" w-24 sm:w-32 md:w-48 lg:w-72 border h-screen bg-sky-100">
+        <div className=" w-24 sm:w-32 md:w-48 lg:w-64 border h-screen bg-sky-100">
             <div className="py-3 sm:py-4 md:py-6 md:px-2 flex flex-col justify-between h-full ">
                 <div className="space-y-2 sm:space-y-4 md:space-y-6 lg:space-y-10 md:text-center ">
                     <div className="">

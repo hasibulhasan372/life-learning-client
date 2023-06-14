@@ -29,9 +29,6 @@ const PaymentCard = ({course, index}) => {
                     {price}
                 </div>
             </td>
-            
-
-            
         </tr>
     );
 };

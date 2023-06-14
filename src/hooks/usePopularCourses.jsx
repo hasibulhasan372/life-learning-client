@@ -12,7 +12,7 @@ const usePopularCourses = () => {
             return res.json()
         }
        })
-       return [popularCourses, refetch]
+       return [popularCourses, refetch];
 };
 
 export default usePopularCourses;

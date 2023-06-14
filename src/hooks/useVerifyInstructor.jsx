@@ -14,7 +14,7 @@ const useVerifyInstructor = () => {
                 return res.data.instructor;
             }
         })
-        return [isInstructor, isInstructorLoading]
+        return [isInstructor, isInstructorLoading];
 };
 
 export default useVerifyInstructor;

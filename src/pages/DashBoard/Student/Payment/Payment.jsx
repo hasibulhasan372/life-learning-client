@@ -25,7 +25,7 @@ const Payment = () => {
     },[id, selectCourses, courses, paymentCourse]);
    
     return (
-        <div className="flex justify-center items-center lg:h-screen lg:w-2/3 mx-auto">
+        <div className="flex justify-center items-center lg:mt-20 w-full md:w-5/6 lg:w-2/3 mx-auto">
             <div className=" p-4 sm:p-6 md:p-8 lg:p-12 xl:p-14 rounded-lg bg-gray-100 w-full md:w-2/3 lg:w-2/3">
                 <h3 className="text-xl md:3xl lg:text-4xl font-bold mb-4 md:mb-6 lg:mb-12 bg-clip-text bg-gradient-to-r from-purple-600 to-red-500 text-transparent animate-bounce "> Payment </h3>
                 <div>

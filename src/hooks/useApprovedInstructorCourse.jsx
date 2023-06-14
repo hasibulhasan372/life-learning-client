@@ -7,8 +7,7 @@ import useAxiosSecure from "./useAxiosSecure";
 const useApprovedInstructorCourse = (email) => {
     const [courses] = useCourses();
     const {user, loading} = useAuth();
-    const [axiosSecure] = useAxiosSecure()
-    // TODO:Need to complete 
+    const [axiosSecure] = useAxiosSecure();
     const {data: instructorApprovedCourses = []} = useQuery({
         queryKey: ["instructorApprovedCourses", courses?.status],
         enabled: !loading&& !!user?.email && !!localStorage.getItem("access-token"),
@@ -17,7 +16,7 @@ const useApprovedInstructorCourse = (email) => {
             return res.json()
         }
        })
-       return [instructorApprovedCourses]
+       return [instructorApprovedCourses];
 };
 
 export default useApprovedInstructorCourse;
