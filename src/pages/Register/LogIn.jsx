@@ -3,8 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import GoogleLogin from "../shared/GoogleLogin";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaSpinner } from "react-icons/fa";
 import { useState } from "react";
+
 
 const LogIn = () => {
     const { logIn} = useAuth();
@@ -12,19 +13,23 @@ const LogIn = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false)
 
     const onSubmit = (data) => {
+        setLoading(true)
         logIn(data.email, data.password)
         .then(result =>{
             const loggedUser = result.user;
             if(loggedUser?.email){
                 toast.success("Login Successfully")
                 navigate(from, { replace: true });
+                setLoading(false)
             }
         })
         .catch( error => {
-            toast.error(error.message)
+            toast.error(error.message);
+            setLoading(false)
         })
     };
     
@@ -49,7 +54,7 @@ const LogIn = () => {
                     </div>
                     
                     {/* Submit Button   */}
-                    <button className="btn  mt-4 bg-gradient-to-r from-purple-600 to-red-500 font-bold text-xl md:text-2xl w-full text-white capitalize" type="submit"> Submit</button>
+                    <button className="btn  mt-4 bg-gradient-to-r from-purple-600 to-red-500 font-bold text-xl md:text-2xl w-full text-white capitalize" type="submit">{loading? <p className="animate-spin"><FaSpinner></FaSpinner></p> : "Submit" } </button>
                     <div>
                     <p className="pt-4">Haven't you an account? <Link to="/signUp" className="underline text-sky-500 ">Sign Up</Link></p>
                     <GoogleLogin></GoogleLogin>

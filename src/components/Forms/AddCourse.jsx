@@ -1,16 +1,19 @@
 import { useForm } from "react-hook-form";
-import { FaStar } from "react-icons/fa";
+import { FaSpinner, FaStar } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useState } from "react";
 
 
 const AddClass = () => {
     const { user } = useAuth()
     const { register, handleSubmit } = useForm();
-    const [axiosSecure] = useAxiosSecure()
+    const [axiosSecure] = useAxiosSecure();
+    const [loading, setLoading] = useState(false)
 
     const onSubmit = data => {
+        setLoading(true)
         const { availableSeat, className, classPhoto, instructorEmail, instructorName, price } = (data);
         const classInfo = {courseName: className,
             instructorName, 
@@ -24,7 +27,8 @@ const AddClass = () => {
         axiosSecure.post('/courses',classInfo)
         .then(res => {
             if(res.data.insertedId){
-                toast.success("Your Course in uploaded and wait for the admin confirmation")
+                toast.success("Your Course in uploaded and wait for the admin confirmation");
+                setLoading(false)
             }
         })
     };
@@ -84,8 +88,8 @@ const AddClass = () => {
                     </div>
 
                     {/* Submit  */}
-                    <div className="w-full border py-2 rounded-lg text-center text-lg font-bold bg-green-500 hover:bg-green-700 transition duration-500  text-white mx-auto col-span-2 md:mt-4">
-                        <input type="submit" value="Add Course" />
+                    <div className="w-full py-2 rounded-lg text-center mx-auto col-span-2 md:mt-4">
+                    <button className="btn  mt-4 bg-gradient-to-r from-purple-600 to-red-500 font-bold text-xl md:text-2xl w-full text-white capitalize" type="submit">{loading? <p className="animate-spin"><FaSpinner></FaSpinner></p> : "Submit" } </button>
                     </div>
 
                 </form>
