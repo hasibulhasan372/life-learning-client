@@ -14,8 +14,8 @@ import { Slide } from "react-awesome-reveal";
 const SignUp = () => {
     const { createUser, updateProfileInfo, logOut } = useAuth();
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors } } = useForm();
     const [loading, setLoading] = useState(false)
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
 
     const onSubmit = (data) => {

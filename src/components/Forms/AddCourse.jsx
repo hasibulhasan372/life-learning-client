@@ -8,9 +8,9 @@ import { useState } from "react";
 
 const AddClass = () => {
     const { user } = useAuth()
-    const { register, handleSubmit } = useForm();
     const [axiosSecure] = useAxiosSecure();
     const [loading, setLoading] = useState(false)
+    const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
         setLoading(true)
@@ -28,6 +28,7 @@ const AddClass = () => {
         .then(res => {
             if(res.data.insertedId){
                 toast.success("Your Course in uploaded and wait for the admin confirmation");
+                reset();
                 setLoading(false)
             }
         })

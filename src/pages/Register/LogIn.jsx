@@ -10,12 +10,12 @@ import { Slide } from "react-awesome-reveal";
 
 const LogIn = () => {
     const { logIn} = useAuth();
-    const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false)
+    const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = (data) => {
         setLoading(true)
@@ -25,7 +25,8 @@ const LogIn = () => {
             if(loggedUser?.email){
                 toast.success("Login Successfully")
                 navigate(from, { replace: true });
-                setLoading(false)
+                reset();
+                setLoading(false);
             }
         })
         .catch( error => {
