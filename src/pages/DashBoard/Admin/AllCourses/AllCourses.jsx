@@ -3,11 +3,14 @@ import { toast } from "react-hot-toast";
 import AllCoursesCard from "../../../../components/Card/AllCoursesCard";
 import useCourses from "../../../../hooks/useCourses"
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useState } from "react";
+import FeedbackModal from "../../../../components/Modal/FeedbackModal";
 
 
 const AllCourses = () => {
     const [courses, refetch] = useCourses();
     const [axiosSecure] = useAxiosSecure();
+    const [isOpen, setIsOpen] = useState(false)
 
 
     const handleApproved = (id) =>{
@@ -29,12 +32,21 @@ const AllCourses = () => {
         }
        })
     };
+    // TODO: Handle feedback by getting id from this event and match with courses 
+    const handleFeedbackModal =()=>{
+        setIsOpen(true);
+    };
+    const closeModal = () =>{
+        setIsOpen(false);
+    };
+   
+      
 
     return (
         <div>
             <div className="flex flex-col justify-center mt-4 md:mt-10 lg:mt-20 overflow-x-scroll lg:overflow-x-hidden">
                 <div className="w-full lg:px-8 lg:mx-auto">
-                    <div className="  ">
+                    <div >
                         <table className="w-full text-left">
                             <thead className="bg-pink-50 border-b-[2px]">
                                 <tr>
@@ -82,11 +94,14 @@ const AllCourses = () => {
                                     index={index}
                                     handleApproved={handleApproved}
                                     handleDeny={handleDeny}
+                                    handleFeedbackModal={handleFeedbackModal}
+                                   
                                     ></AllCoursesCard>)
                                 }
                             </tbody>
                         </table>
                     </div>
+                    <FeedbackModal isOpen={isOpen} closeModal={closeModal}></FeedbackModal>
                 </div>
             </div>
         </div>

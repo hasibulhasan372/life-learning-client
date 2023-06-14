@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 
 
-const Checkout = ({price,paymentCourse, refetch}) => {
+const Checkout = ({price,paymentCourse, refetch,enrollCourseId}) => {
     const stripe = useStripe();
     const elements = useElements();
     const {user} = useAuth();
@@ -85,6 +85,13 @@ const Checkout = ({price,paymentCourse, refetch}) => {
                     .then(res => {
                         console.log(res.data)
                         if (res.data.deletedCount > 0) {
+                            axiosSecure.patch(`/courses/enrolled/${enrollCourseId}`)
+                            .then(res =>{
+                                        console.log(res.data)
+                                        if(res.data.modifiedCount > 0){
+                                            toast.success("Enrollment Complete")
+                                        }
+                            })
                             refetch();
                         }
                     })

@@ -1,7 +1,10 @@
 
-const AllCoursesCard = ({ course, index, handleApproved, handleDeny }) => {
-    const { courseName, instructorName, instructorEmail, fee, image, status, seats, _id } = (course)
+
+const AllCoursesCard = ({ course, index, handleApproved, handleDeny, handleFeedbackModal, }) => {
+    const { courseName, instructorName, instructorEmail, fee, image, status, seats, _id } = (course);
+    
     return (
+        <>
         <tr className="">
             <td className="px-6 py-4 text-sm text-gray-500">
                 {index + 1}
@@ -53,10 +56,13 @@ const AllCoursesCard = ({ course, index, handleApproved, handleDeny }) => {
             </td>
             <td className="px-6 py-4">
                 {/* TODO: Make a feedBack Modal  */}
+                <button onClick={()=>handleFeedbackModal(_id)}>
                 <span className="px-4 py-1 text-sm text-white bg-green-400 rounded font-bold">Feedback</span>
+                </button>
 
             </td>
         </tr>
+        </>
 
     );
 };
