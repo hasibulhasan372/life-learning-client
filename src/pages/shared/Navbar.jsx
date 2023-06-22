@@ -36,6 +36,7 @@ const Navbar = () => {
                         <li className={`menu-bar `}>  <NavLink to='/' className={({ isActive }) => isActive ? "text-purple-500" : ""}>Home</NavLink></li>
                         <li className=" menu-bar"> <NavLink to='/instructors' className={({ isActive }) => isActive ? "text-purple-500" : ""}>Instructors</NavLink></li>
                         <li className=" menu-bar"><NavLink to='/courses' className={({ isActive }) => isActive ? "text-purple-500" : ""}>Courses</NavLink></li>
+                        <li className=" menu-bar"><NavLink to='/contact' className={({ isActive }) => isActive ? "text-purple-500" : ""}>Contact</NavLink></li>
                         {user?.email && <li className="menu-bar relative"> <NavLink to='/dashboard' className={({ isActive }) => isActive ? "text-purple-500" : ""}>Dashboard {selectCourses.length > 0 && <small className="absolute -top-2 text-sky-600 font-bold">+{selectCourses.length}</small>} </NavLink></li>}
                     </ul>
                     <div>
